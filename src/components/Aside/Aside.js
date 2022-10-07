@@ -7,12 +7,17 @@ const Aside = () => {
 
     let [text,setText] = useState();
 
-    let btn = document.querySelectorAll('.breaking-time > button');
+    let buttons = document.querySelectorAll(".breakingTime");
 
-    for(let singleBtn of btn){
-        // console.log(singleBtn);
-        singleBtn.addEventListener('click',() => console.log('clicked'))
-    }
+    // console.log(btn)
+    buttons.forEach(btn => {
+        btn.addEventListener('click', (e) =>{
+            let time = e.target.innerText;
+            console.log(time);
+            setText(time);
+        })
+    })
+
 
     return (
         <section className='p-5'>
@@ -42,11 +47,11 @@ const Aside = () => {
             {/* Breaking Time */}
         <h3>Add a break</h3>
         <div className='breaking-time bg-secondary bg-opacity-10 rounded-4 mt-4 p-4 d-flex justify-content-between'>
-            <button>2m</button>
-            <button>5m</button>
-            <button>10m</button>
-            <button>15m</button>
-            <button>30m</button>
+            <button className='breakingTime'>2m</button>
+            <button className='breakingTime'>5m</button>
+            <button className='breakingTime'>10m</button>
+            <button className='breakingTime'>15m</button>
+            <button className='breakingTime'>30m</button>
         </div>
         {/* Explore */}
         <h3 className='mt-5'>Let's Explore</h3>
@@ -56,7 +61,7 @@ const Aside = () => {
         </div>
         <div className='bg-secondary bg-opacity-10 rounded-4 mt-4 p-3 d-flex justify-content-around'>
         <span className='mb-0 fs-5 fw-semibold'>Break time</span>
-        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>20 minute</span>
+        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>{text? text:"00m"}</span>
         </div>
         <button className='btn btn-primary w-100 mt-4 py-2 fs-5'>Activity Completed</button>
         </section>
