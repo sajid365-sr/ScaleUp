@@ -17,13 +17,12 @@ const Activity = () => {
 
 
     
-    let [time,setTime] = useState([]);
+    let [time,setTime] = useState(true);
+
+
         function AddToCart(displayTime){
            
-            useEffect( () =>{
-                setTime(displayTime);
-            },[displayTime])
-      
+           setTime(displayTime);
 
         }
 

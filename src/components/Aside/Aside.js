@@ -4,8 +4,7 @@ import React, { useState } from 'react';
 import './Aside.css'
 
 const Aside = (props) => {
-    console.log(props.time)
-
+    
     let [text,setText] = useState();
 
     let buttons = document.querySelectorAll(".breakingTime");
