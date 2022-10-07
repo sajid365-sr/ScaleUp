@@ -1,0 +1,33 @@
+
+
+.main-container{
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+}
+.aside-left{
+    padding: 7% 7%;
+}
+.explore{
+    letter-spacing: 10px;
+}
+
+.navbar-toggler{
+    display: none;
+}
+@media only screen and (max-width:575px) {
+    .navbar{
+        height: 400px;
+    }
+    .navbar-toggler{
+        display: block;
+        position: fixed;
+        right: 15px;
+        top: 15px;
+    }
+    .main-container{
+        grid-template-columns: 1fr;
+    }
+    .responsive-sidebar{
+        display: none;
+    }
+}

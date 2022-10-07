@@ -1,0 +1,74 @@
+[
+    {
+        "list":1,
+        "activity":"Hiking",
+        "description":"Hiking is a standard activity for getting outside. Trails exist all over the world for all experience levels, but getting past the first few miles of any hike will often get you out of the tourist zone and into more serious solitude with nature. Or combine hiking and camping on a backpacking trip to really sync up with the outdoors.",
+        "ageLimit":"20-25",
+        "spendingTime":"30m",
+        "img":"https://travel.home.sndimg.com/content/dam/images/travel/fullrights/2018/9/26/0/Original-Clint-Shannon_Outdoor-Activities_Mountain.jpg.rend.hgtvcom.966.725.suffix/1538017253250.jpeg"
+    },
+    {
+        "list":2,
+        "activity":"Fly-Fishing",
+        "description":"For an excuse to stand in a river enjoying the sounds, smells and scenery of some of the most beautiful locations, try fly-fishing. Fishing is a perfect multi-generational activity to enjoy with children, grandparents or whoever. With enough practice, you may even catch a coveted cutthroat trout.",
+        "ageLimit":"15-20",
+        "spendingTime":"1h",
+        "img":"https://travel.home.sndimg.com/content/dam/images/travel/fullrights/2018/9/26/0/shutterstock_172331369_fly-fishing.jpg.rend.hgtvcom.966.644.suffix/1538018624680.jpeg"
+    },
+    {
+        "list":3,
+        "activity":"Horseback Riding",
+        "description":"Many people may shy away from this, citing lack of experience with horses, but most operations have horses for riders of any experience including none. Horses can take you greater distances in a shorter time, covering terrain that would be difficult or inaccessible otherwise.",
+        "ageLimit":"20-25",
+        "spendingTime":"45m",
+        "img":"https://travel.home.sndimg.com/content/dam/images/travel/fullrights/2018/9/26/0/Original-Clint-Shannon_Outdoor-Activities_Horses.jpg.rend.hgtvcom.966.725.suffix/1538017203972.jpeg"
+    },
+    {
+        "list":4,
+        "activity":"Cycling ",
+        "description":"On the trail or the road, spending time on a bike allows you to slow down and take in your surroundings. Mountain biking can give the biggest adrenaline addict a rush, while road cycling may offer a more peaceful and calming experience. Travel with your bike or rent one at your destination, and your possibilities for exploration have already expanded.",
+        "ageLimit":"15-25",
+        "spendingTime":"25m",
+        "img":"https://travel.home.sndimg.com/content/dam/images/travel/fullrights/2018/9/26/0/Original-Clint-Shannon_Outdoor-Activities_Bike.jpg.rend.hgtvcom.966.725.suffix/1538017213688.jpeg"
+    },
+    {
+        "list":5,
+        "activity":"Whitewater Rafting",
+        "description":"Are you looking for some adrenaline to go with your nature? Check for guided whitewater rafting trips around your destination, especially if you're going somewhere with mountainous terrain. Rafting will let you connect with the rougher side of nature while enjoying the comfort of a team and an experienced guide.",
+        "ageLimit":"20-25",
+        "spendingTime":"1.5h",
+        "img":"https://travel.home.sndimg.com/content/dam/images/travel/fullrights/2018/9/26/0/shutterstock_631284503_rafting.jpg.rend.hgtvcom.966.644.suffix/1538018399584.jpeg"
+    },
+    {
+        "list":6,
+        "activity":"Rock Climbing",
+        "description":"For a more physical and challenging experience outdoors, try your hand at rock climbing. You can get a feel for climbing in a gym, but it's real rewards lie in putting those skills to use outside. Many popular travel destinations have great climbing within a day-trip distance.",
+        "ageLimit":"25-30",
+        "spendingTime":"1h",
+        "img":"https://travel.home.sndimg.com/content/dam/images/travel/fullrights/2018/9/26/0/Original-Clint-Shannon_Outdoor-Activities_Climb.jpg.rend.hgtvcom.966.725.suffix/1538017183443.jpeg"
+    },
+    {
+        "list":7,
+        "activity":"Camping",
+        "description":"Camping is the tried-and-true method for getting outdoors. It's perfect for people new to spending time in nature and a favorite of more experienced nature-lovers. Plus, you can combine it with almost any other outdoor activity to create a truly immersive experience.",
+        "ageLimit":"23+",
+        "spendingTime":"2h",
+        "img":"https://travel.home.sndimg.com/content/dam/images/travel/fullrights/2018/9/26/0/Original-Clint-Shannon_Outdoor-Activities_Camp.jpg.rend.hgtvcom.966.725.suffix/1538017234594.jpeg"
+    },
+    {
+        "list":8,
+        "activity":"Skiing + Snowboarding",
+        "description":"For many people, winter travel means warmer weather, but you can always mix things up by finding some mountains and learning how to enjoy the snow that so many of us dread each February. Bundling up near a fireplace is nice, but it's best after a day spent carving powder in a winter wonderland. If you feel less agile and coordinated, snow-shoeing is another excellent way to get out in the snow this winter.",
+        "ageLimit":"20-30",
+        "spendingTime":"30m",
+        "img":"https://travel.home.sndimg.com/content/dam/images/travel/fullrights/2018/9/26/0/shutterstock_217296025_skiing.jpg.rend.hgtvcom.966.725.suffix/1538018873343.jpeg"
+    },
+    {
+        "list":9,
+        "activity":"Star Gazing",
+        "description":"One big advantage of actually getting out of the city when traveling is the night sky. Free from light pollution, you can check out constellations, planets, meteors and more. Finding a good dark sky place or an area far from cities can open up a new hobby and great opportunities to learn about astronomy.",
+        "ageLimit":"10+",
+        "spendingTime":"30m",
+        "img":"https://travel.home.sndimg.com/content/dam/images/travel/fullrights/2018/9/26/0/Original-Clint-Shannon_Outdoor-Activities_Stars.jpg.rend.hgtvcom.966.644.suffix/1538017262801.jpeg"
+    }
+]

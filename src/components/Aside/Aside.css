@@ -1,0 +1,15 @@
+
+
+.user{
+    height: 60px;
+    width: 60px;
+}
+.breaking-time button{
+padding: 8px;
+cursor: pointer;
+background-color: white;
+border-radius: 50%;
+font-weight: 600;
+font-size: medium;
+border: none;
+}
