@@ -1,9 +1,19 @@
 
 import user from '../../user.png'
-import React from 'react';
+import React, { useState } from 'react';
 import './Aside.css'
 
 const Aside = () => {
+
+    let [text,setText] = useState();
+
+    let btn = document.querySelectorAll('.breaking-time > button');
+
+    for(let singleBtn of btn){
+        // console.log(singleBtn);
+        singleBtn.addEventListener('click',() => console.log('clicked'))
+    }
+
     return (
         <section className='p-5'>
             {/* user image */}
