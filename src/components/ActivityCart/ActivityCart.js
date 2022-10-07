@@ -4,6 +4,9 @@ import React from 'react';
 
 const ActivityCart = (props) => {
     let {img, activity, description, ageLimit, spendingTime} = props.activity;
+    let {addToCart} = props;
+    
+   
     return (
         
         <div className='col'>
@@ -14,7 +17,7 @@ const ActivityCart = (props) => {
                         <p className="card-text text-secondary" title={description}>{description.slice(0,80)}...</p>
                         <p className='mb-0 fw-semibold'>For Age: {ageLimit}</p>
                         <p className='mt-0 fw-semibold'>Time Required: {spendingTime}</p>
-                        <button className="btn btn-success w-100 fw-semibold">Add to List</button>
+                        <button onClick={() =>{addToCart(spendingTime)}} className="btn btn-success w-100 fw-semibold">Add to List</button>
                 </div>
         </div>
         </div>

@@ -1,6 +1,6 @@
 
 
-import React, { useEffect, useState } from 'react';
+import React, { useState,useEffect} from 'react';
 import './Activity.css'
 import ActivityCart from '../ActivityCart/ActivityCart';
 import Aside from '../Aside/Aside';
@@ -16,6 +16,20 @@ const Activity = () => {
     },[]);
 
 
+    
+    let [time,setTime] = useState([]);
+        function AddToCart(displayTime){
+           
+            useEffect( () =>{
+                setTime(displayTime);
+            },[displayTime])
+      
+
+        }
+
+    
+       
+
     return (
         <section className='main-container bg-secondary bg-opacity-10'>
             {/* aside left */}
@@ -27,6 +41,7 @@ const Activity = () => {
                         activities.map(activity => <ActivityCart 
                             key = {activity.list} 
                             activity = {activity}
+                            addToCart = {AddToCart}
 
                             ></ActivityCart>)
                     }
@@ -58,7 +73,7 @@ const Activity = () => {
 </div>
 
 <div className='responsive-sidebar'>
-    <Aside></Aside>
+    <Aside time = {time}></Aside>
 </div>
                 
                 

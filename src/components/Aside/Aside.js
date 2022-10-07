@@ -3,17 +3,17 @@ import user from '../../user.png'
 import React, { useState } from 'react';
 import './Aside.css'
 
-const Aside = () => {
+const Aside = (props) => {
+    console.log(props.time)
 
     let [text,setText] = useState();
 
     let buttons = document.querySelectorAll(".breakingTime");
 
-    // console.log(btn)
+    
     buttons.forEach(btn => {
         btn.addEventListener('click', (e) =>{
             let time = e.target.innerText;
-            console.log(time);
             setText(time);
         })
     })
@@ -57,7 +57,7 @@ const Aside = () => {
         <h3 className='mt-5'>Let's Explore</h3>
         <div className='bg-secondary bg-opacity-10 rounded-4 mt-4 p-3 d-flex justify-content-around'>
         <span className='mb-0 fs-5 fw-semibold'>Countdown time</span>
-        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>1.5 hour</span>
+        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>{props.time ? props.time : '00 hr'}</span>
         </div>
         <div className='bg-secondary bg-opacity-10 rounded-4 mt-4 p-3 d-flex justify-content-around'>
         <span className='mb-0 fs-5 fw-semibold'>Break time</span>
