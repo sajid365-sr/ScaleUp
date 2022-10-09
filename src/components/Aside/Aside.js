@@ -3,17 +3,34 @@ import user from '../../user.png'
 import React, { useState } from 'react';
 import './Aside.css'
 
+let totalTime = 0;
 const Aside = (props) => {
-    
-    let [text,setText] = useState();
+console.log(props)
+    let time = props.time;
+    console.log(time);
+    if(typeof time == 'string'){
+
+        if(time.endsWith('m')){
+        let sliceTime = Number(time.slice(0, time.length - 1));
+
+        time = sliceTime;
+        console.log(time)
+        totalTime += time;
+        console.log(totalTime)
+        
+        }
+    }
+
+
+    let [breakingTime,setBreakingTime] = useState();
 
     let buttons = document.querySelectorAll(".breakingTime");
 
     
     buttons.forEach(btn => {
         btn.addEventListener('click', (e) =>{
-            let time = e.target.innerText;
-            setText(time);
+            let  breakTime = e.target.innerText;
+            setBreakingTime(breakTime);
         })
     })
 
@@ -56,11 +73,11 @@ const Aside = (props) => {
         <h3 className='mt-5'>Let's Explore</h3>
         <div className='bg-secondary bg-opacity-10 rounded-4 mt-4 p-3 d-flex justify-content-around'>
         <span className='mb-0 fs-5 fw-semibold'>Countdown time</span>
-        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>{props.time ? props.time : '00 hr'}</span>
+        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>{totalTime}</span>
         </div>
         <div className='bg-secondary bg-opacity-10 rounded-4 mt-4 p-3 d-flex justify-content-around'>
         <span className='mb-0 fs-5 fw-semibold'>Break time</span>
-        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>{text? text:"00m"}</span>
+        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>{breakingTime? breakingTime:"00m"}</span>
         </div>
         <button className='btn btn-primary w-100 mt-4 py-2 fs-5'>Activity Completed</button>
         </section>
