@@ -1,28 +1,90 @@
 
 import user from '../../user.png'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Aside.css'
 
 let totalTime = 0;
 const Aside = (props) => {
-console.log(props)
-    let time = props.time;
-    console.log(time);
-    if(typeof time == 'string'){
 
-        if(time.endsWith('m')){
-        let sliceTime = Number(time.slice(0, time.length - 1));
+    let [time,setTime] = useState();
 
-        time = sliceTime;
-        console.log(time)
-        totalTime += time;
-        console.log(totalTime)
-        
+
+if(time){
+    if(time.includes('.')){
+       
+        let splitTime = time.split('.');
+        let [hour,minute] = splitTime;
+    
+        let sliceMin = minute.slice(0, minute.length - 1);
+       
+        if(sliceMin.length === 2){
+
+            let min =  ((minute.slice(0, minute.length - 1)) / 100) * 60;
+            minute = Number(Math.round(min));
+        }else if(sliceMin.length === 1){
+            let min =  ((minute.slice(0, minute.length - 1)) / 10) * 60;
+            minute = Number(Math.round(min));
         }
+        
+        
+        setTime(hour + 'h' + minute + 'm')
     }
+}
+useEffect( () =>{
+
+  
+    let spendingTime = props.time;
+
+    if(typeof spendingTime == 'string'){
+    
+            if(spendingTime.endsWith('m')){
+            let sliceTime = Number(spendingTime.slice(0, spendingTime.length - 1));
+    
+            totalTime += sliceTime;
+            if(totalTime < 60){
+
+                setTime(totalTime + 'm')
+            }else if(totalTime >= 60){
+                let fixedTime = (totalTime/60).toFixed(2);
+                setTime(fixedTime + 'h');
+            }
+            // else{
+
+            //     setTime(totalTime);
+            // }
+            
+            }
+            
+            else if(spendingTime.endsWith('h')){
+            let sliceTime = Number(spendingTime.slice(0, spendingTime.length - 1));
+
+   
+            if(spendingTime.includes('.')){
+
+                let splitTime = spendingTime.split('.');
+                let [hour,minute] = splitTime;
+
+                hour = Number(hour) * 60;
+                minute =  Number(minute.slice(0, minute.length - 1)) * 6;
+                totalTime += (hour + minute);
+                let fixedTime = (totalTime/60).toFixed(2);
+                setTime(fixedTime + 'h');
+            }else{
+
+                totalTime += (sliceTime * 60);
+               
+    
+                let fixedTime = (totalTime/60).toFixed(2);
+                setTime(fixedTime + 'h');
+                
+            }
+            
+            }
+        }
+    },[props])
 
 
-    let [breakingTime,setBreakingTime] = useState();
+    let [breakingTime,setBreakingTime] = useState(); 
 
     let buttons = document.querySelectorAll(".breakingTime");
 
@@ -73,7 +135,7 @@ console.log(props)
         <h3 className='mt-5'>Let's Explore</h3>
         <div className='bg-secondary bg-opacity-10 rounded-4 mt-4 p-3 d-flex justify-content-around'>
         <span className='mb-0 fs-5 fw-semibold'>Countdown time</span>
-        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>{totalTime}</span>
+        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>{time}</span>
         </div>
         <div className='bg-secondary bg-opacity-10 rounded-4 mt-4 p-3 d-flex justify-content-around'>
         <span className='mb-0 fs-5 fw-semibold'>Break time</span>

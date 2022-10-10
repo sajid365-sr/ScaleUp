@@ -5,7 +5,7 @@ import React from 'react';
 const ActivityCart = (props) => {
     let {img, activity, description, ageLimit, spendingTime} = props.activity;
     let {addToCart} = props;
-    console.log(props)
+    // console.log(props)
    
     return (
         

@@ -23,6 +23,7 @@ const Activity = () => {
         let AddToCart = (displayTime) =>{
            
            setTime(displayTime);
+       
 
         }
 
