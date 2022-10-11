@@ -8,39 +8,47 @@ const Aside = (props) => {
 
     let [time,setTime] = useState();
 
+    let spendingTime = props.exploreTime;
 
-if(time){
-    if(time.includes('.')){
-       
-        let splitTime = time.split('.');
-        let [hour,minute] = splitTime;
     
-        let sliceMin = minute.slice(0, minute.length - 1);
-       
-        if(sliceMin.length === 2){
 
-            let min =  ((minute.slice(0, minute.length - 1)) / 100) * 60;
-            minute = Number(Math.round(min));
-        }else if(sliceMin.length === 1){
-            let min =  ((minute.slice(0, minute.length - 1)) / 10) * 60;
-            minute = Number(Math.round(min));
+    if(time){
+       
+        if(time.includes('.')){
+           
+            let splitTime = time.split('.');
+            let [hour,minute] = splitTime;
+        
+            let sliceMin = minute.slice(0, minute.length - 1);
+            
+            if(sliceMin.length === 2){
+    
+                let min =  ((minute.slice(0, minute.length - 1)) / 100) * 60;
+                minute = Number(Math.round(min));
+            }else if(sliceMin.length === 1){
+                let min =  ((minute.slice(0, minute.length - 1)) / 10) * 60;
+                minute = Number(Math.round(min));
+            }
+            
+            
+            setTime(hour + 'h' + ' '+ minute + 'm')
         }
-        
-        
-        setTime(hour + 'h' + minute + 'm')
     }
-}
+
+
 useEffect( () =>{
 
+    
   
-    let spendingTime = props.time;
+   
 
     if(typeof spendingTime == 'string'){
-    
+       
             if(spendingTime.endsWith('m')){
             let sliceTime = Number(spendingTime.slice(0, spendingTime.length - 1));
     
             totalTime += sliceTime;
+           
             if(totalTime < 60){
 
                 setTime(totalTime + 'm')
@@ -48,10 +56,7 @@ useEffect( () =>{
                 let fixedTime = (totalTime/60).toFixed(2);
                 setTime(fixedTime + 'h');
             }
-            // else{
-
-            //     setTime(totalTime);
-            // }
+           
             
             }
             
@@ -81,21 +86,28 @@ useEffect( () =>{
             
             }
         }
-    },[props])
+    }, [props])
 
-
-    let [breakingTime,setBreakingTime] = useState(); 
-
-    let buttons = document.querySelectorAll(".breakingTime");
 
     
-    buttons.forEach(btn => {
-        btn.addEventListener('click', (e) =>{
-            let  breakTime = e.target.innerText;
-            setBreakingTime(breakTime);
-        })
-    })
+    let [breakingTime,setBreakingTime] = useState(); 
+  
+    useEffect( () =>{
+        let buttons = document.getElementsByClassName("breakingTime");
+        for(let btn of buttons){
+            
+            
+            btn.addEventListener('click', e =>{
+               
+                let  breakTime = e.target.innerText;
+                setBreakingTime(breakTime);
+                
+                
+            })
+        }
+    },[])
 
+    
 
     return (
         <section className='p-5'>
@@ -135,11 +147,11 @@ useEffect( () =>{
         <h3 className='mt-5'>Let's Explore</h3>
         <div className='bg-secondary bg-opacity-10 rounded-4 mt-4 p-3 d-flex justify-content-around'>
         <span className='mb-0 fs-5 fw-semibold'>Countdown time</span>
-        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>{time}</span>
+        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>{time ? time : "00 m/h"}</span>
         </div>
         <div className='bg-secondary bg-opacity-10 rounded-4 mt-4 p-3 d-flex justify-content-around'>
         <span className='mb-0 fs-5 fw-semibold'>Break time</span>
-        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>{breakingTime? breakingTime:"00m"}</span>
+        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>{breakingTime? breakingTime:"00 m"}</span>
         </div>
         <button className='btn btn-primary w-100 mt-4 py-2 fs-5'>Activity Completed</button>
         </section>
