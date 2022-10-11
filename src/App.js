@@ -5,9 +5,7 @@ import Activity from './components/Activity/Activity';
 
 
 function App() {
-  useEffect( () =>{
-    console.log('mounting...')
-  },[])
+
   return (
     <div>
       

@@ -7,40 +7,45 @@ let totalTime = 0;
 const Aside = (props) => {
 
     let [time,setTime] = useState();
+    let [breakingTime,setBreakingTime] = useState(); 
+    // console.log(breakingTime)
+    
+    // if(breakingTime){
+    //    let rest = Number(breakingTime.slice(0,breakingTime.length - 1));
+       
+    //   console.log(rest);
+    //   totalTime += (rest);
+    //   console.log(totalTime - rest)
+    // //   setTime(totalTime)
+ 
+    // }
 
     let spendingTime = props.exploreTime;
 
     
 
-    if(time){
+    if(time && typeof time == 'string' && time.includes('.')){
        
-        if(time.includes('.')){
-           
-            let splitTime = time.split('.');
-            let [hour,minute] = splitTime;
-        
-            let sliceMin = minute.slice(0, minute.length - 1);
-            
-            if(sliceMin.length === 2){
+        let splitTime = time.split('.');
+        let [hour,minute] = splitTime;
     
-                let min =  ((minute.slice(0, minute.length - 1)) / 100) * 60;
-                minute = Number(Math.round(min));
-            }else if(sliceMin.length === 1){
-                let min =  ((minute.slice(0, minute.length - 1)) / 10) * 60;
-                minute = Number(Math.round(min));
-            }
-            
-            
-            setTime(hour + 'h' + ' '+ minute + 'm')
+        let sliceMin = minute.slice(0, minute.length - 1);
+        
+        if(sliceMin.length === 2){
+
+            let min =  ((minute.slice(0, minute.length - 1)) / 100) * 60;
+            minute = Number(Math.round(min));
+        }else if(sliceMin.length === 1){
+            let min =  ((minute.slice(0, minute.length - 1)) / 10) * 60;
+            minute = Number(Math.round(min));
         }
+        
+        
+        setTime(hour + 'h' + ' '+ minute + 'm')
     }
 
 
 useEffect( () =>{
-
-    
-  
-   
 
     if(typeof spendingTime == 'string'){
        
@@ -57,7 +62,6 @@ useEffect( () =>{
                 setTime(fixedTime + 'h');
             }
            
-            
             }
             
             else if(spendingTime.endsWith('h')){
@@ -90,24 +94,33 @@ useEffect( () =>{
 
 
     
-    let [breakingTime,setBreakingTime] = useState(); 
+    
   
+    let buttons = document.getElementsByClassName("breakingTime");
+    
+    
     useEffect( () =>{
-        let buttons = document.getElementsByClassName("breakingTime");
+        let getItem = localStorage.getItem('Breaking Time');
+
+        if(getItem){
+            setBreakingTime(JSON.parse(getItem))
+        }
         for(let btn of buttons){
             
-            
-            btn.addEventListener('click', e =>{
+            btn.addEventListener('click', e => {
+                
                
+
                 let  breakTime = e.target.innerText;
+                localStorage.setItem('Breaking Time',JSON.stringify(breakTime))
                 setBreakingTime(breakTime);
                 
                 
             })
         }
-    },[])
-
-    
+    },[buttons])
+   
+   
 
     return (
         <section className='p-5'>
@@ -151,7 +164,7 @@ useEffect( () =>{
         </div>
         <div className='bg-secondary bg-opacity-10 rounded-4 mt-4 p-3 d-flex justify-content-around'>
         <span className='mb-0 fs-5 fw-semibold'>Break time</span>
-        <span className='fs-5 text-secondary text-opacity-50 fw-semibold'>{breakingTime? breakingTime:"00 m"}</span>
+        <span id='breakTime' className='fs-5 text-secondary text-opacity-50 fw-semibold'>{breakingTime? breakingTime:"00 m"}</span>
         </div>
         <button className='btn btn-primary w-100 mt-4 py-2 fs-5'>Activity Completed</button>
         </section>
@@ -159,3 +172,4 @@ useEffect( () =>{
 };
 
 export default Aside;
+
