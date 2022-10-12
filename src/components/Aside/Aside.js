@@ -2,31 +2,40 @@
 import user from '../../user.png'
 import React, { useEffect, useState } from 'react';
 import './Aside.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 let totalTime = 0;
 const Aside = (props) => {
 
+    // Toast
+
+    let liveToast = () =>{
+        toast.success("Congratulations ! you have completed your task.",{
+            position: "bottom-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+           
+        });
+    }
+
     let [time,setTime] = useState();
     let [breakingTime,setBreakingTime] = useState(); 
-    // console.log(breakingTime)
+   
     
-    // if(breakingTime){
-    //    let rest = Number(breakingTime.slice(0,breakingTime.length - 1));
-       
-    //   console.log(rest);
-    //   totalTime += (rest);
-    //   console.log(totalTime - rest)
-    // //   setTime(totalTime)
- 
-    // }
 
     let spendingTime = props.exploreTime;
 
     
 
     if(time && typeof time == 'string' && time.includes('.')){
+
        
-        let splitTime = time.split('.');
+            let splitTime = time.split('.');
         let [hour,minute] = splitTime;
     
         let sliceMin = minute.slice(0, minute.length - 1);
@@ -39,9 +48,9 @@ const Aside = (props) => {
             let min =  ((minute.slice(0, minute.length - 1)) / 10) * 60;
             minute = Number(Math.round(min));
         }
-        
-        
         setTime(hour + 'h' + ' '+ minute + 'm')
+    
+        
     }
 
 
@@ -90,40 +99,46 @@ useEffect( () =>{
             
             }
         }
-    }, [props])
-
+    }, [props,spendingTime])
 
     
-    
+
+
+  let buttons = document.querySelectorAll('#restTime > button');
+
   
-    let buttons = document.getElementsByClassName("breakingTime");
-    
-    
-    useEffect( () =>{
-        let getItem = localStorage.getItem('Breaking Time');
-
-        if(getItem){
-            setBreakingTime(JSON.parse(getItem))
-        }
-        for(let btn of buttons){
-            
-            btn.addEventListener('click', e => {
-                
-               
-
-                let  breakTime = e.target.innerText;
-                localStorage.setItem('Breaking Time',JSON.stringify(breakTime))
-                setBreakingTime(breakTime);
-                
-                
-            })
-        }
-    },[buttons])
    
+    useEffect( () =>{
+        
+        // get stored time
+
+        let getStoredTime = localStorage.getItem('Breaking Time');
+        if(getStoredTime){
+            setBreakingTime(JSON.parse(getStoredTime));
+            
+        }
+
+        // btn onclick event
+        buttons.forEach(btn => {
+
+            btn.addEventListener('click', e => {
+                let btnText = e.target.innerText;
+                setBreakingTime(btnText);
+                // console.log(btnText)
+
+                // Set to local storage
+                localStorage.setItem('Breaking Time',JSON.stringify(btnText));
+                // localStorage.setItem('')
+            })
+            
+        })
+              
+        
+    },[buttons])
    
 
     return (
-        <section className='p-5'>
+        <section className='p-5 position-relative'>
             {/* user image */}
             <div className='d-flex align-items-center justify-content-center gap-3'>
                 <img className='user' src={user} alt="" />
@@ -149,7 +164,7 @@ useEffect( () =>{
             </div>
             {/* Breaking Time */}
         <h3>Add a break</h3>
-        <div className='breaking-time bg-secondary bg-opacity-10 rounded-4 mt-4 p-4 d-flex justify-content-between'>
+        <div id='restTime' className='breaking-time bg-secondary bg-opacity-10 rounded-4 mt-4 p-4 d-flex justify-content-between'>
             <button className='breakingTime'>2m</button>
             <button className='breakingTime'>5m</button>
             <button className='breakingTime'>10m</button>
@@ -166,7 +181,11 @@ useEffect( () =>{
         <span className='mb-0 fs-5 fw-semibold'>Break time</span>
         <span id='breakTime' className='fs-5 text-secondary text-opacity-50 fw-semibold'>{breakingTime? breakingTime:"00 m"}</span>
         </div>
-        <button className='btn btn-primary w-100 mt-4 py-2 fs-5'>Activity Completed</button>
+        <button  onClick={liveToast} className='btn btn-primary w-100 mt-4 py-2 fs-5'>Activity Completed</button>
+
+        <ToastContainer />
+
+        
         </section>
     );
 };

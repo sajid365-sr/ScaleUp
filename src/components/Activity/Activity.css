@@ -11,23 +11,14 @@
     letter-spacing: 10px;
 }
 
-.navbar-toggler{
-    display: none;
-}
+
 @media only screen and (max-width:575px) {
-    .navbar{
-        height: 400px;
-    }
-    .navbar-toggler{
-        display: block;
-        position: fixed;
-        right: 15px;
-        top: 15px;
-    }
+    
+    
     .main-container{
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column-reverse;
+        
     }
-    .responsive-sidebar{
-        display: none;
-    }
+    
 }
